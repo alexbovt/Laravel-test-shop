@@ -45,7 +45,7 @@
 
             <p>
                 <label for="amount">Price range:</label>
-                <input type="text"   id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+                <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
             </p>
             <div id="slider-range"></div>
 
@@ -58,7 +58,7 @@
 @endsection
 @section('parametrs')
     <ul>
-        <li class="top-mes">
+        <li class="top-mes ">
             <i>{{ucfirst($addition['category_url'])}}</i>
             @if($addition['status'] == 0)
                 <i> {{$addition['manufacturer_name']}}</i>
@@ -66,43 +66,55 @@
             <i class="count-results">{{count($goods)*2}}</i>
             results
         </li>
-        <li class="sort">
+        <li class="sort ">
             <ul class="sort-menu">
                 @if($addition['status'] === 0)
-                    <form action="post">
-                    <li>
-                        <a href="/categories/{{$addition['category_url']}}/manufacturer/{{$good->manufacturer}}/sort=a-z">Alphabetically,
-                            A-Z</a></li>
-                    <li>
-                        <a href="/categories/{{$addition['category_url']}}/manufacturer/{{$good->manufacturer}}/sort=z-a">Alphabetically,
-                            Z-A</a></li>
-                    <li>
-                        <a href="/categories/{{$addition['category_url']}}/manufacturer/{{$good->manufacturer}}/sort=low-high">Price,
-                            low to high</a></li>
-                    <li>
-                        <a href="/categories/{{$addition['category_url']}}/manufacturer/{{$good->manufacturer}}/sort=high-low">Price,
-                            high to low</a></li>
-                    <li>
-                        <a href="/categories/{{$addition['category_url']}}/manufacturer/{{$good->manufacturer}}/sort=old-new">Date,
-                            old to new</a></li>
-                    <li>
-                        <a href="/categories/{{$addition['category_url']}}/manufacturer/{{$good->manufacturer}}/sort=new-old">Date,
-                            new to old</a></li>
-                    <li>
-                        <a href="/categories/{{$addition['category_url']}}/manufacturer/{{$good->manufacturer}}/sort=best-sellers">asdasdasdasdBest
-                            sellers</a></li>
-                </form>
+                    <select onChange="window.location.href=this.value">
+                        <option value="/categories/{{$addition['category_url']}}/manufacturer/{{$good->manufacturer}}/sort=best-sellers">
+                            Bests sellers
+                        </option>
+                        <optgroup label="Alphabetically">
+                            <option value="/categories/{{$addition['category_url']}}/manufacturer/{{$good->manufacturer}}/sort=a-z">
+                                A-Z
+                            </option>
+                            <option value="/categories/{{$addition['category_url']}}/manufacturer/{{$good->manufacturer}}/sort=z-a">
+                                Z-A
+                            </option>
+                        </optgroup>
+                        <optgroup label="Price">
+                            <option value="/categories/{{$addition['category_url']}}/manufacturer/{{$good->manufacturer}}/sort=low-high">
+                                low to high
+                            </option>
+                            <option value="/categories/{{$addition['category_url']}}/manufacturer/{{$good->manufacturer}}/sort=high-low">
+                                high to low
+                            </option>
+                        </optgroup>
+                        <optgroup label="Date">
+                            <option value="/categories/{{$addition['category_url']}}/manufacturer/{{$good->manufacturer}}/sort=old-new">
+                                old to new
+                            </option>
+                            <option value="/categories/{{$addition['category_url']}}/manufacturer/{{$good->manufacturer}}/sort=new-old">
+                                new to old
+                            </option>
+                        </optgroup>
+                    </select>
                 @else
-                    <form action="post">
-                    <li><a href="/categories/{{$addition['category_url']}}/sort=a-z">Alphabetically, A-Z</a></li>
-                    <li><a href="/categories/{{$addition['category_url']}}/sort=z-a">Alphabetically, Z-A</a></li>
-                    <li><a href="/categories/{{$addition['category_url']}}/sort=low-high">Price, low to high</a></li>
-                    <li><a href="/categories/{{$addition['category_url']}}/sort=high-low">Price, high to low</a></li>
-                    <li><a href="/categories/{{$addition['category_url']}}/sort=old-new">Date, Old to new</a></li>
-                    <li><a href="/categories/{{$addition['category_url']}}/sort=new-old">Date, New to old</a></li>
-                    <li><a href="/categories/{{$addition['category_url']}}/sort=best-sellers">asdasdasdasdBest
-                            sellers</a></li>
-                    </form>
+                    <select onChange="window.location.href=this.value">
+                        <option value="/categories/{{$addition['category_url']}}/sort=best-sellers"> Bests sellers
+                        </option>
+                        <optgroup label="Alphabetically">
+                            <option value="/categories/{{$addition['category_url']}}/sort=a-z">A-Z</option>
+                            <option value="/categories/{{$addition['category_url']}}/sort=z-a">Z-A</option>
+                        </optgroup>
+                        <optgroup label="Price">
+                            <option value="/categories/{{$addition['category_url']}}/sort=low-high">low to high</option>
+                            <option value="/categories/{{$addition['category_url']}}/sort=high-low">high to low</option>
+                        </optgroup>
+                        <optgroup label="Date">
+                            <option value="/categories/{{$addition['category_url']}}/sort=old-new">old to new</option>
+                            <option value="/categories/{{$addition['category_url']}}/sort=new-old">new to old</option>
+                        </optgroup>
+                    </select>
                 @endif
             </ul>
         </li>

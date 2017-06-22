@@ -27,9 +27,7 @@ Route::get('/categories/{latin_url}/sort={sort}',
         'uses' => 'CategoryController@categoryAction'
     ]);
 
-Route::get('/#{sort}',
-    ['uses' => 'CategoryController@categoryAction'
-    ]);
+
 /*
 Route::get('/categories/{latin_url}/manufacturer/{manufacturer_name}',
     ['uses' => 'CategoryController@manufacturerAction'
