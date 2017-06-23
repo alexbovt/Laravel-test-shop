@@ -17,24 +17,19 @@ Route::get('/', function () {
 });
 */
 Route::get('/',
-    ['uses' => 'RecommendedGoodsController@recommendAction',
-        'as' => 'Home'
+    [
+        'uses' => 'RecommendedGoodsController@recommendAction'
+    ]);
+
+Route::get('/registration',
+    [
+        'uses' => 'RegistrationController@registerAction'
     ]);
 
 
-Route::get('/categories/{latin_url}/sort={sort}',
+Route::get('/categories/{latin_url}/{manufacturer_name?}/{column?}/{type?}',
     [
         'uses' => 'CategoryController@categoryAction'
-    ]);
-
-
-/*
-Route::get('/categories/{latin_url}/manufacturer/{manufacturer_name}',
-    ['uses' => 'CategoryController@manufacturerAction'
-    ]);
-*/
-Route::get('/categories/{latin_url}/manufacturer/{manufacturer_name}/sort={sort}',
-    ['uses' => 'CategoryController@manufacturerAction'
     ]);
 
 
@@ -42,10 +37,12 @@ Route::get('/goods/{latin_url}',
     ['uses' => 'GoodsController@showAction'
     ]);
 
+
 Route::get('/order/{id}',
     ['uses' => 'OrdersController@buyAction'
     ]);
-
+/*
 Route::post('/order_final',
     ['uses' => 'OrdersController@finishAction'
     ]);
+*/

@@ -8,17 +8,21 @@
                         <img src="http://store.local/images/products/{{$good->category_id}}/{{$good->latin_url}}.jpg">
                     </div>
                     <span class="good-name">{{$good->name}}</span>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam delectus dolores
-                        doloribus
-                        eligendi, fugiat iusto labore magni maiores minus nesciunt nisi nostrum odio porro
-                        repellendus,
-                        suscipit temporibus tenetur ut. Adipisci debitis delectus deleniti ducimus est, ipsa
-                        ipsam,
-                        iusto modi nam nobis officiis, quo quos tenetur totam vero voluptate voluptatem
-                        voluptates?
-                    </p>
+                    <p>{{$good->description}}</p>
                     <span class="price">{{$good->price}}$</span>
                     <span class="fa fa-cart-plus fa-2x" onclick="alert('Added to cart')"></span>
+                </a>
+            </li>
+        @endforeach
+    </ul>
+@endsection
+@section('search-block')
+    <ul>
+        <p>All Brands</p>
+        @foreach(App\Manufacturer::all() as $manufacturer)
+            <li>
+                <a href="manufacturer/{{$manufacturer->latin_url}}/sort=best-sellers">
+                    {{$manufacturer->name}}
                 </a>
             </li>
         @endforeach
